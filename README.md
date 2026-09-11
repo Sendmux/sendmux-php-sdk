@@ -12,12 +12,12 @@ Read the PHP SDK guide at [sendmux.ai/docs/sdks/php](https://sendmux.ai/docs/sdk
 
 - PHP 8.2 or newer.
 - Composer.
-- A Sendmux API key for each API surface you call.
+- A Sendmux API key or REST OAuth grant for each API surface you call.
 
 ## Installation
 
 ```bash
-composer require sendmux/sdk:^2.0
+composer require sendmux/sdk:^2.1
 ```
 
 Upgrading from 1.x? Read the [PHP 2.0 migration guide](https://github.com/Sendmux/sendmux-sdk/blob/main/packages/php/UPGRADING.md) before changing your Composer constraint.
@@ -50,6 +50,8 @@ $management = ManagementFactory::createMailboxesApi(
 
 > [!NOTE]
 > `sendmux/sdk` installs all PHP SDK surfaces. It does not replace the surface factories.
+
+For OAuth, use each factory’s `WithAccessToken` variant, such as `SendingFactory::createMetaApiWithAccessToken($accessToken)`. It accepts a bare token or a callable returning one; see [OAuth setup and lifecycle](https://sendmux.ai/docs/developer-tools/oauth).
 
 ## Included packages
 
